@@ -1,0 +1,77 @@
+{include file=comm/head.html}
+
+<!-- 幻灯片 -->
+
+<!--产品推荐-->
+<div class="bg-white py-5">
+    <div class="container">
+    
+      {pboot:sort scode=5}
+      	<div class="text-center fs-26 fs-sm-28 text-success wow fadeInDown">[sort:name]</div>
+      	<div class="text-center fs-14 fs-sm-16 mb-4 text-secondary wow fadeInUp" data-wow-delay="1s">- [sort:subname] -</div>
+      {/pboot:sort}
+      
+      <div class="row">
+       {pboot:list scode=5 num=4 order=date}
+        <div class="col-12 col-sm-6 col-lg-3 wow zoomIn" data-wow-delay="[list:i]00ms" data-wow-duration="1s">
+              <div class="card">
+                  <div class="card-img-150"><a href="[list:link]"><img class="card-img-top" src="[list:ico]" alt="[list:title]"></a></div>
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="[list:link]">[list:title lencn=12]</a></h5>
+                    <p class="card-text">
+	                    {pboot:if([list:istop]==1)}
+	                		<span class="badge badge-danger">置顶</span>
+	                	{/pboot:if}
+	                	{pboot:if([list:isrecommend]==1)}
+	                		<span class="badge badge-warning">推荐</span>
+	                	{/pboot:if}
+	                	{pboot:if([list:isheadline]==1)}
+	                		<span class="badge badge-info">头条</span>
+	                	{/pboot:if}
+	             
+                	</p>
+                  </div>
+               </div>
+         </div>
+        {/pboot:list}
+      </div>
+	  {pboot:sort scode=5}
+			<div class="text-center mt-4 wow fadeInDown" data-wow-delay="1s"><h4><a href="[sort:link]" class="text-secondary fs-14 fs-sm-16">MORE</a></h4></div>
+	  {/pboot:sort}
+    </div>
+</div>
+
+
+<!-- 新闻动态 -->
+
+
+
+<script src="{pboot:sitetplpath}/swiper-4.3.5/js/swiper.min.js"></script>
+<script>        
+  var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    speed: 1500,
+    autoplay : {
+        delay:3500,
+        disableOnInteraction: false
+     },
+     
+    
+    // 如果需要分页器
+    pagination: {
+      el: '.swiper-pagination',
+      clickable :true,
+    },
+    
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+   
+  })        
+</script>
+  
+{include file=comm/foot.html}
+
